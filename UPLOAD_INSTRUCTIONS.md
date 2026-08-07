@@ -1,22 +1,13 @@
-# AI Healthcare Intelligence Portfolio V3.1
+# AI Healthcare Intelligence Portfolio V3.2
 
-이번 버전은 V3의 인터랙션을 유지하면서 상세 패널 내용을 기능별로 구분했습니다.
-
-업로드 구조:
-
-```text
-AI_Healthcare_Intelligence_Demo/
-├── index.html
-└── assets/
-    ├── dashboard-overview.png
-    ├── knowledge-workspace.png
-    ├── knowledge-detail.png
-    ├── grounded-qa.png
-    └── connections.png
-```
+이번 수정은 GitHub Pages용 코드 변경입니다.
 
 변경점:
-- Dashboard / Workspace / Detail / Grounded QA / Connections별 상세 설명 차별화
-- 각 상세 모달에 Purpose / Implemented / Tech / Next 4개 영역
-- 기능 카드 클릭 시 해당 기능에 맞는 상세 패널 표시
-- 핵심 코드 저장소는 계속 Private 유지
+- Hero 오른쪽 프로토타입 화면의 기울기 제거
+- 화면은 정면으로 유지하고 아주 미세한 수직 floating 효과만 적용
+- Hover 시 기울지 않고 위로 살짝 올라오는 효과
+- 상단 숫자/상태 카드에 컬러 SVG 아이콘 추가
+- 기존 V3.1의 인터랙티브 탭, 클릭 상세 패널, 기능별 Purpose / Implemented / Tech / Next 유지
+
+업로드:
+`index.html`과 `assets/` 폴더를 Public Demo 저장소 루트에 덮어쓰세요.
