@@ -10,18 +10,15 @@
       --bg: #07111f;
       --bg-soft: #0d1b2e;
       --surface: rgba(255,255,255,.07);
-      --surface-strong: rgba(255,255,255,.11);
       --line: rgba(255,255,255,.13);
       --text: #f7fbff;
       --muted: #aab8c8;
       --blue: #7bb8ff;
       --cyan: #72e8da;
       --violet: #a88cff;
-      --gold: #ffd58a;
       --shadow: 0 30px 80px rgba(0,0,0,.35);
       --radius-xl: 32px;
       --radius-lg: 22px;
-      --radius-md: 16px;
     }
 
     * { box-sizing: border-box; }
@@ -40,523 +37,171 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-
-    .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .025;
-      background-image:
-        linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, black, transparent 90%);
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
     .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(18px);
       background: rgba(7,17,31,.72);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
-
     .nav-inner {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -.02em;
-    }
-
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
     .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background:
-        linear-gradient(135deg, rgba(123,184,255,.95), rgba(168,140,255,.95));
-      box-shadow: 0 10px 30px rgba(123,184,255,.28);
+      width: 34px; height: 34px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(123,184,255,.95), rgba(168,140,255,.95));
     }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
 
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav-links a:hover { color: white; }
-
-    .hero {
-      padding: 100px 0 64px;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 48px;
-      align-items: center;
-    }
-
+    .hero { padding: 100px 0 64px; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 48px; align-items: center; }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 13px;
-      border: 1px solid rgba(123,184,255,.25);
-      border-radius: 999px;
-      color: #dcecff;
-      background: rgba(123,184,255,.08);
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 22px;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 8px 13px; border: 1px solid rgba(123,184,255,.25);
+      border-radius: 999px; background: rgba(123,184,255,.08);
+      font-size: 13px; font-weight: 700; margin-bottom: 22px;
     }
-
     .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 16px rgba(114,232,218,.8);
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--cyan); box-shadow: 0 0 16px rgba(114,232,218,.8);
     }
-
     h1 {
-      margin: 0;
-      font-size: clamp(54px, 7.4vw, 92px);
-      line-height: .98;
-      letter-spacing: -.055em;
-      max-width: 780px;
+      margin: 0; font-size: clamp(54px, 7.4vw, 92px);
+      line-height: .98; letter-spacing: -.055em;
     }
-
     .gradient-text {
-      background: linear-gradient(90deg, #ffffff 0%, #b8d6ff 35%, #c6b6ff 67%, #92f0e5 100%);
-      -webkit-background-clip: text;
-      color: transparent;
+      background: linear-gradient(90deg, #fff, #b8d6ff 35%, #c6b6ff 67%, #92f0e5);
+      -webkit-background-clip: text; color: transparent;
     }
-
-    .hero-lead {
-      margin: 30px 0 0;
-      max-width: 760px;
-      font-size: 22px;
-      color: #d6e0ea;
-      letter-spacing: -.01em;
-    }
-
-    .hero-korean {
-      margin: 16px 0 0;
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
+    .hero-lead { margin: 30px 0 0; font-size: 22px; color: #d6e0ea; }
+    .hero-korean { margin: 16px 0 0; color: var(--muted); font-size: 17px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
     .button {
-      min-height: 50px;
-      padding: 0 20px;
-      border-radius: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      border: 1px solid var(--line);
+      min-height: 50px; padding: 0 20px; border-radius: 14px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 800; border: 1px solid var(--line);
       background: rgba(255,255,255,.06);
-      transition: .2s ease;
     }
-
-    .button:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,.1);
-    }
-
     .button.primary {
       color: #06111e;
       background: linear-gradient(135deg, #b8d8ff, #8de9de);
       border-color: transparent;
-      box-shadow: 0 20px 45px rgba(114,232,218,.18);
     }
 
     .visual {
-      position: relative;
-      min-height: 520px;
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(4px);
-    }
-
-    .orb.one {
-      width: 260px; height: 260px;
-      right: 20px; top: 10px;
-      background: radial-gradient(circle at 35% 35%, #9ed1ff, #6a7cff 45%, transparent 72%);
-      opacity: .75;
-    }
-
-    .orb.two {
-      width: 220px; height: 220px;
-      left: 10px; bottom: 20px;
-      background: radial-gradient(circle at 35% 35%, #9affec, #38a99b 45%, transparent 72%);
-      opacity: .55;
-    }
-
-    .dashboard-mock {
-      position: absolute;
-      inset: 52px 0 20px 44px;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,.13);
-      background: rgba(9,20,35,.82);
+      min-height: 460px; border-radius: 28px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-      overflow: hidden;
-      transform: rotate(1.5deg);
+      background: rgba(255,255,255,.04);
+      padding: 18px;
+      transform: rotate(1deg);
     }
-
-    .mock-topbar {
-      height: 54px;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-      display: flex;
-      align-items: center;
-      padding: 0 18px;
-      gap: 8px;
-    }
-
-    .mock-dot {
-      width: 9px; height: 9px; border-radius: 50%;
-      background: rgba(255,255,255,.28);
-    }
-
-    .mock-body {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      min-height: 420px;
-    }
-
-    .mock-side {
-      padding: 18px 12px;
-      border-right: 1px solid rgba(255,255,255,.08);
-    }
-
-    .side-line {
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.1);
-      margin-bottom: 14px;
-    }
-
-    .side-line.active {
-      background: linear-gradient(90deg, rgba(123,184,255,.8), rgba(114,232,218,.6));
-    }
-
-    .mock-main {
-      padding: 24px;
-    }
-
-    .mock-title {
-      width: 62%;
-      height: 22px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.86);
-      margin-bottom: 22px;
-    }
-
-    .mock-sub {
-      width: 82%;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.17);
-      margin-bottom: 10px;
-    }
-
-    .mock-cards {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .mock-card {
-      min-height: 120px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.05);
-      border-radius: 16px;
-      padding: 16px;
-    }
-
-    .mini-bar {
-      height: 10px;
-      width: 60%;
-      border-radius: 999px;
-      background: rgba(255,255,255,.7);
-      margin-bottom: 14px;
-    }
-
-    .mini-line {
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-      margin-bottom: 9px;
+    .visual img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      border-radius: 18px; display: block;
     }
 
     section { padding: 58px 0; }
-
     .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      align-items: end;
-      margin-bottom: 26px;
+      display: flex; justify-content: space-between; gap: 30px;
+      align-items: end; margin-bottom: 26px;
     }
-
     .section-head h2 {
-      margin: 0;
-      font-size: clamp(34px, 4vw, 50px);
-      line-height: 1.08;
-      letter-spacing: -.04em;
+      margin: 0; font-size: clamp(34px, 4vw, 50px);
+      line-height: 1.08; letter-spacing: -.04em;
     }
+    .section-head p { margin: 0; max-width: 560px; color: var(--muted); }
 
-    .section-head p {
-      margin: 0;
-      max-width: 560px;
-      color: var(--muted);
+    .stats, .features {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
     }
+    .features { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .stat {
-      padding: 26px;
-      border-radius: var(--radius-lg);
+    .card, .stat {
+      padding: 26px; border-radius: var(--radius-lg);
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
       box-shadow: 0 16px 40px rgba(0,0,0,.16);
     }
-
     .stat strong {
-      display: block;
-      font-size: 38px;
-      letter-spacing: -.04em;
-      margin-bottom: 4px;
+      display: block; font-size: 38px; letter-spacing: -.04em; margin-bottom: 4px;
     }
-
-    .stat span { color: var(--muted); font-size: 14px; }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 26px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
-      box-shadow: 0 16px 40px rgba(0,0,0,.16);
-      transition: .22s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(123,184,255,.34);
-      background: linear-gradient(180deg, rgba(255,255,255,.095), rgba(255,255,255,.05));
-    }
+    .stat span, .card p { color: var(--muted); }
+    .card h3 { margin: 0 0 10px; font-size: 21px; }
 
     .icon {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      margin-bottom: 18px;
-      font-weight: 900;
-      color: #07111f;
-      background: linear-gradient(135deg, #b9d8ff, #8ee7dd);
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 14px; margin-bottom: 18px; font-weight: 900;
+      color: #07111f; background: linear-gradient(135deg, #b9d8ff, #8ee7dd);
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 21px;
-      letter-spacing: -.02em;
+    .prototype-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
     }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
+    .shot {
+      overflow: hidden; padding: 0;
     }
+    .shot img {
+      width: 100%; display: block; aspect-ratio: 16/10; object-fit: cover; object-position: top;
+      border-bottom: 1px solid var(--line);
+    }
+    .shot-body { padding: 22px 24px 24px; }
+    .shot-body h3 { margin: 0 0 8px; }
+    .shot-body p { margin: 0; color: var(--muted); }
 
     .pipeline {
-      padding: 28px;
-      border-radius: var(--radius-xl);
+      padding: 28px; border-radius: var(--radius-xl);
       border: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(123,184,255,.09), rgba(168,140,255,.08), rgba(114,232,218,.06));
+      background: linear-gradient(135deg, rgba(123,184,255,.09), rgba(168,140,255,.08), rgba(114,232,218,.06));
       overflow-x: auto;
     }
-
     .pipeline-row {
-      min-width: 960px;
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 14px;
-      align-items: center;
+      min-width: 960px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px;
     }
-
     .pipeline-step {
-      min-height: 130px;
-      padding: 18px;
-      border-radius: 18px;
+      min-height: 130px; padding: 18px; border-radius: 18px;
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(4,13,25,.55);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 8px;
-      text-align: center;
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 8px; text-align: center;
     }
-
-    .pipeline-step b { font-size: 15px; }
     .pipeline-step small { color: var(--muted); }
 
-    .architecture-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .arch-card {
-      min-height: 280px;
-    }
-
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .chip {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: #dbe7f3;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .roadmap {
-      display: grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .roadmap-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      color: var(--muted);
-    }
-
-    .check {
-      flex: 0 0 auto;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: #07111f;
-      background: linear-gradient(135deg, #b9d8ff, #8ee7dd);
-      font-size: 12px;
-      font-weight: 900;
-      margin-top: 2px;
-    }
-
-    .future {
-      background: transparent;
-      border: 1px dashed rgba(255,255,255,.18);
-      color: var(--muted);
-    }
-
     .disclaimer {
-      padding: 26px;
-      border-radius: var(--radius-lg);
+      padding: 26px; border-radius: var(--radius-lg);
       border: 1px solid rgba(255,213,138,.24);
-      background: rgba(255,213,138,.07);
-      color: #f5ddb0;
+      background: rgba(255,213,138,.07); color: #f5ddb0;
     }
 
-    footer {
-      padding: 38px 0 60px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    footer { padding: 38px 0 60px; color: var(--muted); font-size: 14px; }
 
     @media (max-width: 980px) {
-      .hero-grid,
-      .architecture-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .visual { min-height: 460px; }
+      .hero-grid, .prototype-grid { grid-template-columns: 1fr; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .features { grid-template-columns: repeat(2, 1fr); }
       .section-head { align-items: start; flex-direction: column; }
     }
-
     @media (max-width: 640px) {
       .container { width: min(100% - 24px, 1180px); }
       .nav-links { display: none; }
       .hero { padding-top: 58px; }
       h1 { font-size: 52px; }
-      .hero-lead { font-size: 19px; }
-      .visual { min-height: 400px; }
-      .dashboard-mock { inset: 42px 0 12px 0; }
-      .stats,
-      .features { grid-template-columns: 1fr; }
-      .mock-body { grid-template-columns: 90px 1fr; }
+      .stats, .features { grid-template-columns: 1fr; }
+      .visual { min-height: 300px; }
     }
   </style>
 </head>
 <body>
-  <div class="noise"></div>
-
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top">
-        <span class="brand-mark"></span>
-        <span>AI Healthcare Intelligence</span>
-      </a>
+      <a class="brand" href="#top"><span class="brand-mark"></span><span>AI Healthcare Intelligence</span></a>
       <nav class="nav-links">
         <a href="#features">Features</a>
+        <a href="#prototype">Prototype</a>
         <a href="#pipeline">Pipeline</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#roadmap">Roadmap</a>
       </nav>
     </div>
   </header>
@@ -574,66 +219,20 @@
             의료 AI 논문, 임상 가이드라인, 정부자료와 개인 연구 메모를 구조화하고 연결해
             검색·학습·근거 기반 질의응답으로 확장하는 개인 연구용 Knowledge Operating System입니다.
           </p>
-
           <div class="actions">
-            <a class="button primary" href="#features">Explore the Platform</a>
+            <a class="button primary" href="#prototype">View Working Prototype</a>
             <a class="button" href="https://github.com/cherryyoun33-commits/AI_Healthcare_Intelligence_Demo">View GitHub</a>
           </div>
         </div>
-
-        <div class="visual" aria-label="대시보드 목업">
-          <div class="orb one"></div>
-          <div class="orb two"></div>
-          <div class="dashboard-mock">
-            <div class="mock-topbar">
-              <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
-            </div>
-            <div class="mock-body">
-              <aside class="mock-side">
-                <div class="side-line active"></div>
-                <div class="side-line"></div>
-                <div class="side-line"></div>
-                <div class="side-line"></div>
-                <div class="side-line"></div>
-              </aside>
-              <div class="mock-main">
-                <div class="mock-title"></div>
-                <div class="mock-sub"></div>
-                <div class="mock-sub" style="width:72%"></div>
-                <div class="mock-cards">
-                  <div class="mock-card">
-                    <div class="mini-bar"></div>
-                    <div class="mini-line"></div>
-                    <div class="mini-line"></div>
-                    <div class="mini-line" style="width:75%"></div>
-                  </div>
-                  <div class="mock-card">
-                    <div class="mini-bar" style="width:48%"></div>
-                    <div class="mini-line"></div>
-                    <div class="mini-line" style="width:82%"></div>
-                    <div class="mini-line" style="width:64%"></div>
-                  </div>
-                  <div class="mock-card">
-                    <div class="mini-bar" style="width:56%"></div>
-                    <div class="mini-line"></div>
-                    <div class="mini-line"></div>
-                  </div>
-                  <div class="mock-card">
-                    <div class="mini-bar" style="width:70%"></div>
-                    <div class="mini-line"></div>
-                    <div class="mini-line" style="width:68%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="visual">
+          <img src="assets/dashboard-overview.png" alt="AI Healthcare Intelligence working dashboard overview" />
         </div>
       </div>
     </section>
 
     <section>
       <div class="container stats">
-        <article class="stat"><strong>190+</strong><span>Knowledge Objects</span></article>
+        <article class="stat"><strong>382</strong><span>Knowledge Objects</span></article>
         <article class="stat"><strong>450</strong><span>Automated Tests Passed</span></article>
         <article class="stat"><strong>RAG</strong><span>Evidence-grounded Retrieval</span></article>
         <article class="stat"><strong>Verified</strong><span>Repository Protection</span></article>
@@ -644,41 +243,65 @@
       <div class="container">
         <div class="section-head">
           <h2>One platform for research, learning, and evidence.</h2>
-          <p>
-            단순한 자료 보관이 아니라, 문서를 구조화하고 서로 연결해 재사용 가능한 연구 지식으로 전환합니다.
-          </p>
+          <p>자료를 구조화하고 연결해 재사용 가능한 연구 지식으로 전환합니다.</p>
+        </div>
+        <div class="features">
+          <article class="card"><div class="icon">KO</div><h3>Knowledge Objects</h3><p>논문과 가이드라인을 일관된 메타데이터와 요약 구조로 변환합니다.</p></article>
+          <article class="card"><div class="icon">LN</div><h3>Learning Notes</h3><p>복잡한 연구자료를 핵심 개념과 적용 포인트 중심으로 정리합니다.</p></article>
+          <article class="card"><div class="icon">AR</div><h3>AI Reflection</h3><p>연구 공백, 제품 아이디어, MVP 적용 가능성을 분석합니다.</p></article>
+          <article class="card"><div class="icon">CN</div><h3>Connections</h3><p>문서와 설계 의사결정 사이의 관계를 연결합니다.</p></article>
+          <article class="card"><div class="icon">SS</div><h3>Semantic Search</h3><p>키워드가 달라도 의미적으로 관련된 자료를 탐색합니다.</p></article>
+          <article class="card"><div class="icon">QA</div><h3>Grounded QA</h3><p>저장된 근거와 Evidence Span을 기반으로 답변합니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="prototype">
+      <div class="container">
+        <div class="section-head">
+          <h2>Current working prototype</h2>
+          <p>현재 로컬 환경에서 구현되어 실제로 작동하는 대시보드 화면입니다.</p>
         </div>
 
-        <div class="features">
-          <article class="card">
-            <div class="icon">KO</div>
-            <h3>Knowledge Objects</h3>
-            <p>논문과 가이드라인을 일관된 메타데이터, 요약, 연구 relevance 구조로 변환합니다.</p>
+        <div class="prototype-grid">
+          <article class="card shot">
+            <img src="assets/dashboard-overview.png" alt="Dashboard overview" />
+            <div class="shot-body">
+              <h3>Dashboard Overview</h3>
+              <p>프로젝트 현황과 지식 자산 규모를 한 화면에서 확인합니다.</p>
+            </div>
           </article>
-          <article class="card">
-            <div class="icon">LN</div>
-            <h3>Learning Notes</h3>
-            <p>복잡한 자료를 다시 학습할 수 있도록 핵심 개념, 질문, 적용 포인트 중심으로 정리합니다.</p>
+
+          <article class="card shot">
+            <img src="assets/knowledge-workspace.png" alt="Knowledge workspace" />
+            <div class="shot-body">
+              <h3>Knowledge Workspace</h3>
+              <p>논문, 가이드라인, 정부자료, 내부 지식을 검색하고 탐색합니다.</p>
+            </div>
           </article>
-          <article class="card">
-            <div class="icon">AR</div>
-            <h3>AI Reflection</h3>
-            <p>단순 요약을 넘어 연구 공백, 제품 아이디어, MVP 적용 가능성을 분석합니다.</p>
+
+          <article class="card shot">
+            <img src="assets/knowledge-detail.png" alt="Knowledge detail" />
+            <div class="shot-body">
+              <h3>Knowledge Detail</h3>
+              <p>구조화 요약, 리소스, 학습 노트, AI Reflection과 관련 기능을 검토합니다.</p>
+            </div>
           </article>
-          <article class="card">
-            <div class="icon">CN</div>
-            <h3>Connections</h3>
-            <p>논문, 가이드라인, 내부 메모, 설계 의사결정 사이의 관계를 연결합니다.</p>
+
+          <article class="card shot">
+            <img src="assets/grounded-qa.png" alt="Grounded question answering" />
+            <div class="shot-body">
+              <h3>Grounded Question Answering</h3>
+              <p>저장된 연구 근거를 바탕으로 답변하고 Evidence 링크를 제공합니다.</p>
+            </div>
           </article>
-          <article class="card">
-            <div class="icon">SS</div>
-            <h3>Semantic Search</h3>
-            <p>키워드가 달라도 의미적으로 관련된 자료를 탐색할 수 있도록 설계했습니다.</p>
-          </article>
-          <article class="card">
-            <div class="icon">QA</div>
-            <h3>Grounded QA</h3>
-            <p>저장된 근거와 Evidence Span을 기반으로 답변하고 관련 문서와 위치를 연결합니다.</p>
+
+          <article class="card shot">
+            <img src="assets/connections.png" alt="Knowledge connections" />
+            <div class="shot-body">
+              <h3>Knowledge Connections</h3>
+              <p>관련 문서의 연결 이유와 연구·설계 관점에서의 중요성을 함께 보여줍니다.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -688,9 +311,8 @@
       <div class="container">
         <div class="section-head">
           <h2>Knowledge pipeline</h2>
-          <p>원천 문서가 구조화된 지식과 연구 인사이트로 발전하는 전체 흐름입니다.</p>
+          <p>원천 문서가 구조화된 지식과 연구 인사이트로 발전하는 흐름입니다.</p>
         </div>
-
         <div class="pipeline">
           <div class="pipeline-row">
             <div class="pipeline-step"><b>Source Documents</b><small>Papers, Guidelines, Reports</small></div>
@@ -701,77 +323,6 @@
             <div class="pipeline-step"><b>Grounded QA</b><small>Evidence-linked answers</small></div>
             <div class="pipeline-step"><b>Research Insights</b><small>Product and clinical direction</small></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="architecture">
-      <div class="container">
-        <div class="section-head">
-          <h2>Architecture built for traceability.</h2>
-          <p>근거 보존, 인간 검토, 출처 분리, 재현 가능한 파이프라인을 중심으로 설계했습니다.</p>
-        </div>
-
-        <div class="architecture-grid">
-          <article class="card arch-card">
-            <h3>Technology Stack</h3>
-            <p>Backend, frontend, retrieval, testing을 하나의 개인 연구 워크플로우로 통합합니다.</p>
-            <div class="stack">
-              <span class="chip">Python</span>
-              <span class="chip">FastAPI</span>
-              <span class="chip">React</span>
-              <span class="chip">TypeScript</span>
-              <span class="chip">Vite</span>
-              <span class="chip">Embeddings</span>
-              <span class="chip">Semantic Retrieval</span>
-              <span class="chip">Grounded QA</span>
-              <span class="chip">Pytest</span>
-              <span class="chip">GitHub</span>
-            </div>
-          </article>
-
-          <article class="card arch-card">
-            <h3>Quality and Safety Principles</h3>
-            <div class="roadmap">
-              <div class="roadmap-item"><span class="check">✓</span><span>Evidence First: 중요한 주장과 답변은 가능한 경우 근거와 연결</span></div>
-              <div class="roadmap-item"><span class="check">✓</span><span>No Unsupported Inference: 자료에 없는 내용을 확정적으로 생성하지 않음</span></div>
-              <div class="roadmap-item"><span class="check">✓</span><span>Human Review: AI 결과는 최종 판단이 아니라 검토 가능한 후보</span></div>
-              <div class="roadmap-item"><span class="check">✓</span><span>Source Separation: 원본, 구조화 산출물, 사용자 메모, AI 분석을 구분</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="roadmap">
-      <div class="container">
-        <div class="section-head">
-          <h2>Roadmap</h2>
-          <p>개인 지식 플랫폼에서 임상 AI 지식 워크플로우로 확장 중입니다.</p>
-        </div>
-
-        <div class="architecture-grid">
-          <article class="card">
-            <h3>Implemented</h3>
-            <div class="roadmap">
-              <div class="roadmap-item"><span class="check">✓</span><span>Knowledge Objects</span></div>
-              <div class="roadmap-item"><span class="check">✓</span><span>Learning Notes and AI Reflection</span></div>
-              <div class="roadmap-item"><span class="check">✓</span><span>Semantic Search and Grounded QA</span></div>
-              <div class="roadmap-item"><span class="check">✓</span><span>Evidence Deep Links</span></div>
-              <div class="roadmap-item"><span class="check">✓</span><span>Study Assist and Connections</span></div>
-            </div>
-          </article>
-
-          <article class="card future">
-            <h3>Next Direction</h3>
-            <div class="roadmap">
-              <div class="roadmap-item"><span class="check">→</span><span>Knowledge Graph Visualization</span></div>
-              <div class="roadmap-item"><span class="check">→</span><span>Citation-aware Multi-document Synthesis</span></div>
-              <div class="roadmap-item"><span class="check">→</span><span>Structured Symptom Intelligence</span></div>
-              <div class="roadmap-item"><span class="check">→</span><span>Guideline-aware Clinical Workflow Support</span></div>
-              <div class="roadmap-item"><span class="check">→</span><span>Research-to-Product Knowledge Lifecycle</span></div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -787,9 +338,7 @@
   </main>
 
   <footer>
-    <div class="container">
-      AI Healthcare Intelligence Platform · Public Portfolio Demo
-    </div>
+    <div class="container">AI Healthcare Intelligence Platform · Public Portfolio Demo</div>
   </footer>
 </body>
 </html>
