@@ -1,8 +1,6 @@
-# AI Healthcare Intelligence Demo Package
+# Upload Instructions
 
-Upload `index.html` and the entire `assets/` folder to the root of the public GitHub repository.
-
-Required structure:
+Upload the following to the root of the public GitHub repository:
 
 ```text
 AI_Healthcare_Intelligence_Demo/
@@ -14,3 +12,5 @@ AI_Healthcare_Intelligence_Demo/
     ├── grounded-qa.png
     └── connections.png
 ```
+
+The core development repository remains private. This package contains only the public portfolio page and screenshots.
