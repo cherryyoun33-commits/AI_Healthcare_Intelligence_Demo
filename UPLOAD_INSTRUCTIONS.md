@@ -1,6 +1,6 @@
-# Upload Instructions
+# AI Healthcare Intelligence Portfolio V2
 
-Upload the following to the root of the public GitHub repository:
+Upload `index.html` and the entire `assets/` folder to the root of the public demo repository.
 
 ```text
 AI_Healthcare_Intelligence_Demo/
@@ -13,4 +13,4 @@ AI_Healthcare_Intelligence_Demo/
     └── connections.png
 ```
 
-The core development repository remains private. This package contains only the public portfolio page and screenshots.
+Core development code remains private. This package is only the public portfolio layer.
