@@ -212,7 +212,7 @@
     .modal-body{padding:24px}
     .modal-body h3{margin:0 0 8px;font-size:26px}
     .modal-body p{margin:0;color:var(--muted)}
-    .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
     .detail-box{padding:15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04)}
     .detail-box b{display:block;margin-bottom:5px}
     .detail-box span{color:var(--muted);font-size:13px}
@@ -319,7 +319,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Core capabilities</h2>
-          <p>카드를 눌러 각 기능이 무엇을 하는지 확인할 수 있습니다.</p>
+          <p>각 기능 카드를 눌러 Purpose, Implemented, Tech, Next를 확인할 수 있습니다.</p>
         </div>
         <div class="features">
           <article class="card feature-card" data-feature="knowledge"><div class="icon">KO</div><h3>Knowledge Objects</h3><p>논문과 가이드라인을 일관된 구조로 변환합니다.</p></article>
@@ -485,6 +485,7 @@
         <div class="detail-grid">
           <div class="detail-box"><b>Purpose</b><span id="modalPurpose"></span></div>
           <div class="detail-box"><b>Implemented</b><span id="modalImplemented"></span></div>
+          <div class="detail-box"><b>Tech</b><span id="modalTech"></span></div>
           <div class="detail-box"><b>Next</b><span id="modalNext"></span></div>
         </div>
       </div>
@@ -512,39 +513,49 @@
 
     const screenData={
       dashboard:{
-        image:"assets/dashboard-overview.png",title:"Dashboard Overview",
-        desc:"The research command center for project status and knowledge assets.",
-        purpose:"프로젝트 현황과 지식 자산 규모를 한 화면에서 확인",
-        implemented:"Knowledge statistics · Project status · Dashboard navigation",
-        next:"More visual analytics and project-level trends"
+        image:"assets/dashboard-overview.png",
+        title:"Dashboard Overview",
+        desc:"The research command center for project status, knowledge assets, and current development focus.",
+        purpose:"프로젝트 전체 현황과 연구 진행 상황을 한눈에 파악",
+        implemented:"Knowledge Object 통계 · Sprint Status · Current Focus · Primary Priority · Knowledge Summary",
+        tech:"React · TypeScript · Dashboard state · Knowledge index",
+        next:"Progress visualization · Activity timeline · Recent update summaries"
       },
       workspace:{
-        image:"assets/knowledge-workspace.png",title:"Knowledge Workspace",
-        desc:"A searchable workspace for structured healthcare AI knowledge.",
-        purpose:"논문, 가이드라인, 정부자료, 내부 지식을 탐색",
-        implemented:"Search · Filters · Metadata navigation · Knowledge list",
-        next:"Advanced clustering and graph-based discovery"
+        image:"assets/knowledge-workspace.png",
+        title:"Knowledge Workspace",
+        desc:"A searchable workspace for hundreds of structured healthcare AI knowledge assets.",
+        purpose:"논문, 가이드라인, 정부자료, 내부 지식을 빠르게 탐색하고 비교",
+        implemented:"Search · Content search · Sort · List/Card view · Metadata navigation · Type filters",
+        tech:"React · FastAPI · Metadata index · Search layer",
+        next:"Saved searches · Advanced clustering · Knowledge graph discovery"
       },
       detail:{
-        image:"assets/knowledge-detail.png",title:"Knowledge Detail",
-        desc:"Structured summaries and reusable learning layers around each source.",
-        purpose:"한 문서의 구조화 지식, 학습, 리소스를 통합 검토",
-        implemented:"Summary · Resources · Learning Notes · AI Reflection",
-        next:"Richer citation-level navigation and cross-document synthesis"
+        image:"assets/knowledge-detail.png",
+        title:"Knowledge Detail",
+        desc:"A document-centered workspace combining structured summaries, resources, and reusable learning layers.",
+        purpose:"하나의 Knowledge Object를 중심으로 요약, 근거, 학습, 연결 정보를 통합 검토",
+        implemented:"Dashboard Summary · Original source link · Korean Translation · Learning Notes · My Notes · AI Reflection · Connections",
+        tech:"Structured Markdown · Knowledge schema · Resource linking · Learning layer",
+        next:"Citation-level navigation · Auto evidence highlighting · Cross-document synthesis"
       },
       qa:{
-        image:"assets/grounded-qa.png",title:"Grounded Question Answering",
-        desc:"Evidence-grounded answers connected back to supporting sources.",
-        purpose:"저장된 근거를 바탕으로 답변하고 Evidence로 되돌아가기",
-        implemented:"Semantic retrieval · Evidence Span · Source references",
-        next:"Citation-aware multi-document synthesis and quality checks"
+        image:"assets/grounded-qa.png",
+        title:"Grounded Question Answering",
+        desc:"Evidence-grounded answers that connect each response back to supporting sources.",
+        purpose:"저장된 지식 근거만을 중심으로 질문에 답하고 Evidence로 되돌아가기",
+        implemented:"Semantic retrieval · Evidence Span · Citation mapping · Source references · QA history",
+        tech:"Embeddings · Semantic Retrieval · Prompt Engineering · Evidence mapping",
+        next:"Citation-aware multi-document synthesis · Confidence checks · Retrieval quality evaluation"
       },
       connections:{
-        image:"assets/connections.png",title:"Knowledge Connections",
-        desc:"Relationships across papers, guidelines, notes, and design decisions.",
-        purpose:"문서 간 연결 이유와 설계 중요성을 재사용 가능한 지식으로 관리",
-        implemented:"Relationship explanation · Research relevance · Design relevance",
-        next:"Interactive knowledge graph visualization"
+        image:"assets/connections.png",
+        title:"Knowledge Connections",
+        desc:"A relationship layer explaining how papers, guidelines, notes, and design decisions connect.",
+        purpose:"문서 간 연결 이유와 연구·설계 관점에서의 중요성을 재사용 가능한 지식으로 관리",
+        implemented:"Related Documents · Reason · Why it matters · Relationship type · Relevance classification",
+        tech:"Relationship generation · Structured connection objects · Cross-document linking",
+        next:"Interactive knowledge graph · Cluster view · Relationship recommendation"
       }
     };
 
@@ -563,13 +574,14 @@
     const modalDescription=document.getElementById("modalDescription");
     const modalPurpose=document.getElementById("modalPurpose");
     const modalImplemented=document.getElementById("modalImplemented");
+    const modalTech=document.getElementById("modalTech");
     const modalNext=document.getElementById("modalNext");
 
     function openDetail(key){
       const d=screenData[key];
       modalImage.src=d.image;modalImage.alt=d.title;
       modalTitle.textContent=d.title;modalDescription.textContent=d.desc;
-      modalPurpose.textContent=d.purpose;modalImplemented.textContent=d.implemented;modalNext.textContent=d.next;
+      modalPurpose.textContent=d.purpose;modalImplemented.textContent=d.implemented;modalTech.textContent=d.tech;modalNext.textContent=d.next;
       modal.classList.add("open");modal.setAttribute("aria-hidden","false");
     }
     function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true")}
