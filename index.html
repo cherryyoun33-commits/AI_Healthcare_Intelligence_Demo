@@ -3,59 +3,61 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AI Healthcare Intelligence Platform public portfolio demo" />
+  <meta name="description" content="AI Healthcare Intelligence public portfolio demo" />
   <title>AI Healthcare Intelligence</title>
   <style>
-    :root {
-      --bg:#07111f; --bg2:#0a1727; --surface:rgba(255,255,255,.07);
-      --surface2:rgba(255,255,255,.045); --line:rgba(255,255,255,.13);
-      --text:#f7fbff; --muted:#aab8c8; --blue:#7bb8ff; --cyan:#72e8da;
-      --violet:#a88cff; --gold:#ffd58a; --shadow:0 30px 90px rgba(0,0,0,.38);
-      --radius-xl:34px; --radius-lg:22px; --radius-md:16px;
+    :root{
+      --bg:#06101d;--bg2:#0a1727;--panel:#0d1d30;
+      --surface:rgba(255,255,255,.07);--surface2:rgba(255,255,255,.045);
+      --line:rgba(255,255,255,.13);--text:#f7fbff;--muted:#a9b7c8;
+      --blue:#7bb8ff;--cyan:#72e8da;--violet:#a88cff;--gold:#ffd58a;
+      --shadow:0 32px 90px rgba(0,0,0,.38);--rxl:34px;--rlg:22px;--rmd:16px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;
-      background:
-        radial-gradient(circle at 10% 8%,rgba(123,184,255,.16),transparent 28%),
-        radial-gradient(circle at 92% 10%,rgba(168,140,255,.15),transparent 24%),
-        radial-gradient(circle at 75% 68%,rgba(114,232,218,.10),transparent 28%),
-        linear-gradient(180deg,var(--bg),var(--bg2) 50%,#08111d);
       line-height:1.7;overflow-x:hidden;
+      background:
+        radial-gradient(circle at 8% 8%,rgba(123,184,255,.17),transparent 28%),
+        radial-gradient(circle at 92% 10%,rgba(168,140,255,.15),transparent 24%),
+        radial-gradient(circle at 72% 68%,rgba(114,232,218,.09),transparent 28%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 48%,#08111d);
     }
     a{color:inherit;text-decoration:none}
     button{font:inherit}
     .container{width:min(1180px,calc(100% - 40px));margin:0 auto}
-    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
     .reveal.visible{opacity:1;transform:none}
 
     .nav{
-      position:sticky;top:0;z-index:30;backdrop-filter:blur(18px);
-      background:rgba(7,17,31,.78);border-bottom:1px solid rgba(255,255,255,.08)
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(18px);background:rgba(6,16,29,.78);
+      border-bottom:1px solid rgba(255,255,255,.08)
     }
     .nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
     .brand-mark{
       width:36px;height:36px;border-radius:13px;
       background:linear-gradient(135deg,#7bb8ff,#a88cff);
-      box-shadow:0 10px 30px rgba(123,184,255,.26)
+      box-shadow:0 10px 30px rgba(123,184,255,.25)
     }
     .nav-links{display:flex;gap:22px;color:var(--muted);font-size:14px}
     .nav-links a:hover{color:white}
 
-    .hero{padding:112px 0 76px;position:relative}
+    .hero{padding:116px 0 80px;position:relative}
     .hero:before{
       content:"";position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-                 linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-      background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 85%);
+      background:linear-gradient(rgba(255,255,255,.024) 1px,transparent 1px),
+                 linear-gradient(90deg,rgba(255,255,255,.024) 1px,transparent 1px);
+      background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 88%);
     }
-    .hero-grid{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:50px;align-items:center}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
     .eyebrow{
-      display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid rgba(123,184,255,.25);
-      border-radius:999px;background:rgba(123,184,255,.08);font-size:13px;font-weight:700;margin-bottom:22px
+      display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:999px;
+      border:1px solid rgba(123,184,255,.25);background:rgba(123,184,255,.08);
+      font-size:13px;font-weight:700;margin-bottom:22px
     }
     .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px rgba(114,232,218,.9)}
     h1{margin:0;font-size:clamp(58px,7.3vw,94px);line-height:.98;letter-spacing:-.058em}
@@ -74,28 +76,40 @@
     .button.primary{color:#06111e;background:linear-gradient(135deg,#b8d8ff,#8de9de);border-color:transparent}
 
     .hero-browser{
-      border:1px solid rgba(255,255,255,.14);border-radius:30px;overflow:hidden;background:rgba(255,255,255,.05);
-      box-shadow:var(--shadow);transform:rotate(1deg);animation:float 6s ease-in-out infinite
+      position:relative;border:1px solid rgba(255,255,255,.14);border-radius:30px;overflow:hidden;
+      background:rgba(255,255,255,.05);box-shadow:var(--shadow);transform:rotate(1deg);
+      min-height:420px
     }
-    @keyframes float{0%,100%{transform:rotate(1deg) translateY(0)}50%{transform:rotate(.3deg) translateY(-10px)}}
-    .browser-bar{height:46px;display:flex;align-items:center;gap:8px;padding:0 16px;background:rgba(7,17,31,.72);
-      border-bottom:1px solid rgba(255,255,255,.09)}
+    .browser-bar{height:46px;display:flex;align-items:center;gap:8px;padding:0 16px;background:rgba(7,17,31,.8);border-bottom:1px solid rgba(255,255,255,.09)}
     .browser-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3)}
-    .hero-browser img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}
+    .hero-slide{position:absolute;inset:46px 0 0;opacity:0;transition:opacity .7s ease}
+    .hero-slide.active{opacity:1}
+    .hero-slide img{width:100%;height:100%;object-fit:cover;object-position:top}
+    .hero-label{
+      position:absolute;right:16px;bottom:16px;padding:8px 12px;border-radius:999px;
+      background:rgba(6,16,29,.8);border:1px solid rgba(255,255,255,.12);
+      font-size:12px;font-weight:800;color:#dfeeff
+    }
 
-    section{padding:64px 0}
+    section{padding:66px 0}
     .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:28px}
     .section-head h2{margin:0;font-size:clamp(36px,4vw,52px);line-height:1.06;letter-spacing:-.045em}
     .section-head p{margin:0;max-width:590px;color:var(--muted)}
 
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .stat,.card{
-      padding:26px;border-radius:var(--radius-lg);border:1px solid var(--line);
+      padding:26px;border-radius:var(--rlg);border:1px solid var(--line);
       background:linear-gradient(180deg,var(--surface),var(--surface2));
       box-shadow:0 16px 40px rgba(0,0,0,.16)
     }
     .stat strong{display:block;font-size:42px;letter-spacing:-.04em;margin-bottom:4px}
     .stat span,.card p{color:var(--muted)}
+    .hero-statement{
+      margin-top:18px;padding:22px 24px;border-radius:var(--rlg);
+      border:1px solid rgba(123,184,255,.16);
+      background:linear-gradient(90deg,rgba(123,184,255,.08),rgba(114,232,218,.05));
+      color:#dce8f5;font-size:20px;font-weight:700
+    }
 
     .overview-grid,.architecture-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .overview-copy h3,.card h3{margin:0 0 10px;font-size:22px}
@@ -103,64 +117,70 @@
     .overview-list{display:grid;gap:13px}
     .overview-item{display:flex;gap:12px;align-items:flex-start;color:var(--muted)}
     .check{
-      flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#07111f;
-      background:linear-gradient(135deg,#b9d8ff,#8ee7dd);font-weight:900;font-size:12px;margin-top:2px
+      flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+      color:#07111f;background:linear-gradient(135deg,#b9d8ff,#8ee7dd);
+      font-weight:900;font-size:12px;margin-top:2px
     }
 
     .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .feature-card{transition:.22s ease}
+    .feature-card{cursor:pointer;transition:.22s ease;position:relative;overflow:hidden}
     .feature-card:hover{transform:translateY(-5px);border-color:rgba(123,184,255,.34)}
+    .feature-card:after{
+      content:"Learn more →";position:absolute;right:22px;bottom:18px;color:#b9d8ff;
+      font-size:12px;font-weight:800;opacity:.7
+    }
     .icon{
       width:44px;height:44px;display:grid;place-items:center;border-radius:14px;margin-bottom:18px;font-weight:900;
       color:#07111f;background:linear-gradient(135deg,#b9d8ff,#8ee7dd)
     }
 
-    .slider-wrap{position:relative}
-    .slider{
-      display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;
-      scrollbar-width:none
+    .prototype-shell{
+      display:grid;grid-template-columns:220px 1fr;gap:18px;align-items:stretch
     }
-    .slider::-webkit-scrollbar{display:none}
-    .slide{
-      min-width:min(860px,88vw);scroll-snap-align:center;overflow:hidden;padding:0;position:relative
+    .prototype-tabs{display:grid;gap:10px;align-content:start}
+    .prototype-tab{
+      text-align:left;padding:15px 16px;border-radius:14px;border:1px solid var(--line);
+      background:rgba(255,255,255,.045);color:var(--muted);cursor:pointer;transition:.2s ease
     }
-    .shot-badge{
-      position:absolute;top:14px;left:14px;z-index:2;padding:7px 10px;border-radius:999px;
-      background:rgba(7,17,31,.82);border:1px solid rgba(255,255,255,.14);font-size:12px;font-weight:800
+    .prototype-tab:hover,.prototype-tab.active{
+      color:white;background:rgba(123,184,255,.11);border-color:rgba(123,184,255,.28)
     }
-    .slide button{width:100%;padding:0;border:0;background:transparent;cursor:zoom-in;display:block}
-    .slide img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
-    .shot-body{padding:22px 24px 24px}
-    .shot-body h3{margin:0 0 8px;font-size:24px}
-    .shot-body p{margin:0;color:var(--muted)}
-    .slider-controls{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
-    .round-btn{
-      width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);
-      color:white;cursor:pointer;font-size:22px
+    .prototype-stage{
+      overflow:hidden;padding:0;min-height:560px;position:relative
     }
+    .prototype-screen{display:none}
+    .prototype-screen.active{display:block}
+    .prototype-screen button{width:100%;padding:0;border:0;background:transparent;cursor:pointer;display:block}
+    .prototype-screen img{
+      width:100%;display:block;aspect-ratio:16/9;object-fit:cover;object-position:top;
+      border-bottom:1px solid var(--line)
+    }
+    .prototype-copy{padding:24px}
+    .prototype-copy h3{margin:0 0 8px;font-size:25px}
+    .prototype-copy p{margin:0;color:var(--muted)}
+    .prototype-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+    .mini-chip{padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);font-size:12px;color:#d7e3ef}
+    .explore-hint{margin-top:12px;color:#8cded3;font-size:13px;font-weight:700}
 
     .pipeline{
-      padding:28px;border-radius:var(--radius-xl);border:1px solid var(--line);
+      padding:28px;border-radius:var(--rxl);border:1px solid var(--line);
       background:linear-gradient(135deg,rgba(123,184,255,.09),rgba(168,140,255,.08),rgba(114,232,218,.06));
       overflow-x:auto
     }
     .pipeline-row{min-width:960px;display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
     .pipeline-step{
-      min-height:132px;padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.12);
+      position:relative;min-height:132px;padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.12);
       background:rgba(4,13,25,.55);display:flex;flex-direction:column;justify-content:center;gap:8px;text-align:center
     }
     .pipeline-step small{color:var(--muted)}
-    .pipeline-step{position:relative}
     .pipeline-step:not(:last-child):after{
-      content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);
-      color:rgba(255,255,255,.4);font-size:20px
+      content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.42);font-size:20px
     }
+    .pulse-node{animation:pulse 2.8s ease-in-out infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 rgba(123,184,255,0)}50%{box-shadow:0 0 26px rgba(123,184,255,.13)}}
 
     .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    .chip{
-      padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);color:#dbe7f3;font-size:13px;font-weight:700
-    }
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#dbe7f3;font-size:13px;font-weight:700}
     .roadmap{display:grid;gap:12px;margin-top:18px}
     .roadmap-item{display:flex;gap:12px;align-items:flex-start;color:var(--muted)}
     .future .check{background:transparent;color:var(--cyan);border:1px solid rgba(114,232,218,.35)}
@@ -168,48 +188,56 @@
     .timeline{position:relative;display:grid;gap:18px;margin-top:24px}
     .timeline:before{content:"";position:absolute;left:14px;top:10px;bottom:10px;width:1px;background:rgba(255,255,255,.14)}
     .timeline-item{position:relative;padding-left:46px}
-    .timeline-dot{
-      position:absolute;left:5px;top:4px;width:20px;height:20px;border-radius:50%;
-      background:linear-gradient(135deg,#7bb8ff,#72e8da);box-shadow:0 0 20px rgba(114,232,218,.2)
-    }
+    .timeline-dot{position:absolute;left:5px;top:4px;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#7bb8ff,#72e8da);box-shadow:0 0 20px rgba(114,232,218,.2)}
     .timeline-item b{display:block;margin-bottom:4px}
     .timeline-item span{color:var(--muted)}
 
     .project-status{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .status-label{color:var(--muted);font-size:13px}
     .status-value{font-size:20px;font-weight:800;margin-top:6px}
-
-    .disclaimer{
-      padding:26px;border-radius:var(--radius-lg);border:1px solid rgba(255,213,138,.24);
-      background:rgba(255,213,138,.07);color:#f5ddb0
-    }
+    .disclaimer{padding:26px;border-radius:var(--rlg);border:1px solid rgba(255,213,138,.24);background:rgba(255,213,138,.07);color:#f5ddb0}
     footer{padding:42px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.08)}
     .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
     .modal{
       position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
-      padding:24px;background:rgba(2,8,16,.9);backdrop-filter:blur(10px)
+      padding:24px;background:rgba(2,8,16,.91);backdrop-filter:blur(10px)
     }
     .modal.open{display:flex}
-    .modal img{max-width:min(1500px,96vw);max-height:90vh;border-radius:18px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.15)}
+    .modal-card{
+      width:min(1180px,96vw);max-height:90vh;overflow:auto;border-radius:24px;border:1px solid rgba(255,255,255,.15);
+      background:#0a1727;box-shadow:var(--shadow)
+    }
+    .modal-card img{width:100%;display:block;max-height:68vh;object-fit:contain;background:#06101d;border-bottom:1px solid var(--line)}
+    .modal-body{padding:24px}
+    .modal-body h3{margin:0 0 8px;font-size:26px}
+    .modal-body p{margin:0;color:var(--muted)}
+    .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .detail-box{padding:15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04)}
+    .detail-box b{display:block;margin-bottom:5px}
+    .detail-box span{color:var(--muted);font-size:13px}
     .modal-close{
-      position:fixed;top:20px;right:24px;width:44px;height:44px;border-radius:50%;
-      border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.09);color:white;cursor:pointer;font-size:22px
+      position:fixed;top:20px;right:24px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.09);color:white;cursor:pointer;font-size:22px;z-index:110
     }
 
-    @media (max-width:980px){
+    @media(max-width:980px){
       .hero-grid,.overview-grid,.architecture-grid{grid-template-columns:1fr}
       .stats{grid-template-columns:repeat(2,1fr)}
       .features{grid-template-columns:repeat(2,1fr)}
       .project-status{grid-template-columns:1fr}
       .section-head{align-items:start;flex-direction:column}
+      .prototype-shell{grid-template-columns:1fr}
+      .prototype-tabs{grid-template-columns:repeat(2,1fr)}
     }
-    @media (max-width:640px){
+    @media(max-width:640px){
       .container{width:min(100% - 24px,1180px)}
       .nav-links{display:none}
       .hero{padding-top:62px}
       h1{font-size:50px}
       .stats,.features{grid-template-columns:1fr}
+      .prototype-tabs{grid-template-columns:1fr}
+      .detail-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -220,7 +248,7 @@
       <nav class="nav-links">
         <a href="#overview">Overview</a>
         <a href="#features">Features</a>
-        <a href="#prototype">Prototype</a>
+        <a href="#prototype">Explore</a>
         <a href="#architecture">Architecture</a>
         <a href="#roadmap">Roadmap</a>
       </nav>
@@ -232,61 +260,55 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow"><span class="dot"></span> Public Portfolio Demo</div>
-          <h1 class="gradient-text">From Healthcare Knowledge to Clinical Intelligence</h1>
-          <p class="hero-lead">
-            A personal AI platform that transforms healthcare papers, clinical guidelines,
-            research notes, and evidence into reusable knowledge assets.
-          </p>
-          <p class="hero-korean">
-            의료 AI 논문, 임상 가이드라인, 정부자료와 개인 연구 메모를 구조화하고 연결해
-            검색·학습·근거 기반 질의응답으로 확장하는 개인 연구용 Knowledge Operating System입니다.
-          </p>
+          <h1 class="gradient-text">Turning Healthcare Literature into Clinical Intelligence</h1>
+          <p class="hero-lead">Evidence-grounded AI knowledge workspace for healthcare research and clinical decision support exploration.</p>
+          <p class="hero-korean">의료 AI 논문, 임상 가이드라인, 정부자료와 개인 연구 메모를 구조화하고 연결해 검색·학습·근거 기반 질의응답으로 확장하는 개인 연구용 Knowledge Operating System입니다.</p>
           <div class="actions">
-            <a class="button primary" href="#prototype">View Prototype</a>
+            <a class="button primary" href="#prototype">Explore Prototype</a>
             <a class="button" href="#architecture">Architecture</a>
+            <a class="button" href="#roadmap">Roadmap</a>
           </div>
         </div>
 
-        <div class="hero-browser">
-          <div class="browser-bar">
-            <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
-          </div>
-          <img src="assets/dashboard-overview.png" alt="AI Healthcare Intelligence dashboard overview" />
+        <div class="hero-browser" id="heroBrowser">
+          <div class="browser-bar"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+          <div class="hero-slide active"><img src="assets/dashboard-overview.png" alt="Dashboard"><span class="hero-label">Dashboard</span></div>
+          <div class="hero-slide"><img src="assets/knowledge-workspace.png" alt="Knowledge Workspace"><span class="hero-label">Knowledge</span></div>
+          <div class="hero-slide"><img src="assets/grounded-qa.png" alt="Grounded QA"><span class="hero-label">Grounded QA</span></div>
+          <div class="hero-slide"><img src="assets/connections.png" alt="Connections"><span class="hero-label">Connections</span></div>
         </div>
       </div>
     </section>
 
     <section class="reveal">
-      <div class="container stats">
-        <article class="stat"><strong class="counter" data-target="382">0</strong><span>Knowledge Objects</span></article>
-        <article class="stat"><strong class="counter" data-target="450">0</strong><span>Automated Tests Passed</span></article>
-        <article class="stat"><strong>RAG</strong><span>Evidence-grounded Retrieval</span></article>
-        <article class="stat"><strong>Private</strong><span>Core Code Repository</span></article>
+      <div class="container">
+        <div class="stats">
+          <article class="stat"><strong class="counter" data-target="382">0</strong><span>Knowledge Objects</span></article>
+          <article class="stat"><strong class="counter" data-target="450">0</strong><span>Automated Tests Passed</span></article>
+          <article class="stat"><strong>RAG</strong><span>Evidence-grounded Retrieval</span></article>
+          <article class="stat"><strong>Private</strong><span>Core Code Repository</span></article>
+        </div>
+        <div class="hero-statement">Turning hundreds of curated healthcare knowledge assets into an evidence-grounded AI research workspace.</div>
       </div>
     </section>
 
     <section id="overview" class="reveal">
       <div class="container">
         <div class="section-head">
-          <h2>Why this platform exists</h2>
+          <h2>What is this?</h2>
           <p>흩어진 의료 AI 자료를 다시 찾고, 이해하고, 연결하고, 실제 설계에 재사용하기 위한 연구 환경입니다.</p>
         </div>
         <div class="overview-grid">
           <article class="card overview-copy">
             <h3>Disconnected knowledge becomes reusable intelligence.</h3>
-            <p>
-              Healthcare AI research is distributed across papers, clinical guidelines,
-              government reports, implementation studies, and personal notes.
-              This platform converts those materials into structured knowledge assets
-              that can be searched, reviewed, connected, and reused over time.
-            </p>
+            <p>Healthcare AI research is distributed across papers, clinical guidelines, government reports, implementation studies, and personal notes. This platform converts those materials into structured knowledge assets that can be searched, reviewed, connected, and reused over time.</p>
           </article>
           <article class="card">
             <div class="overview-list">
               <div class="overview-item"><span class="check">✓</span><span>자료별 형식을 일관된 Knowledge Object로 변환</span></div>
               <div class="overview-item"><span class="check">✓</span><span>근거와 출처를 보존한 검색 및 질의응답</span></div>
-              <div class="overview-item"><span class="check">✓</span><span>학습 노트, AI Reflection, Connections로 지식 재사용</span></div>
-              <div class="overview-item"><span class="check">✓</span><span>향후 Symptom Structuring MVP를 지원하는 연구 기반</span></div>
+              <div class="overview-item"><span class="check">✓</span><span>Learning Notes, AI Reflection, Connections로 지식 재사용</span></div>
+              <div class="overview-item"><span class="check">✓</span><span>향후 Symptom Structuring MVP와 Clinical RAG 연구 기반</span></div>
             </div>
           </article>
         </div>
@@ -297,15 +319,15 @@
       <div class="container">
         <div class="section-head">
           <h2>Core capabilities</h2>
-          <p>단순 저장이 아니라 구조화, 학습, 연결, 검색, 근거 기반 응답까지 하나의 흐름으로 구성합니다.</p>
+          <p>카드를 눌러 각 기능이 무엇을 하는지 확인할 수 있습니다.</p>
         </div>
         <div class="features">
-          <article class="card feature-card"><div class="icon">KO</div><h3>Knowledge Objects</h3><p>논문과 가이드라인을 일관된 메타데이터, 요약, relevance 구조로 변환합니다.</p></article>
-          <article class="card feature-card"><div class="icon">LN</div><h3>Learning Notes</h3><p>복잡한 자료를 핵심 개념, 질문, 적용 포인트 중심으로 다시 학습할 수 있게 정리합니다.</p></article>
-          <article class="card feature-card"><div class="icon">AR</div><h3>AI Reflection</h3><p>단순 요약을 넘어 연구 공백, 제품 아이디어, MVP 적용 가능성을 분석합니다.</p></article>
-          <article class="card feature-card"><div class="icon">CN</div><h3>Connections</h3><p>논문, 가이드라인, 내부 메모와 설계 의사결정 사이의 관계를 연결합니다.</p></article>
-          <article class="card feature-card"><div class="icon">SS</div><h3>Semantic Search</h3><p>키워드가 달라도 의미적으로 관련된 자료를 탐색할 수 있도록 설계했습니다.</p></article>
-          <article class="card feature-card"><div class="icon">QA</div><h3>Grounded QA</h3><p>저장된 근거와 Evidence Span을 기반으로 답변하고 관련 문서 위치를 연결합니다.</p></article>
+          <article class="card feature-card" data-feature="knowledge"><div class="icon">KO</div><h3>Knowledge Objects</h3><p>논문과 가이드라인을 일관된 구조로 변환합니다.</p></article>
+          <article class="card feature-card" data-feature="learning"><div class="icon">LN</div><h3>Learning Notes</h3><p>복잡한 자료를 다시 학습할 수 있는 자산으로 정리합니다.</p></article>
+          <article class="card feature-card" data-feature="reflection"><div class="icon">AR</div><h3>AI Reflection</h3><p>연구 공백, 제품 아이디어, MVP 적용 가능성을 분석합니다.</p></article>
+          <article class="card feature-card" data-feature="connections"><div class="icon">CN</div><h3>Connections</h3><p>문서와 설계 의사결정 사이의 관계를 연결합니다.</p></article>
+          <article class="card feature-card" data-feature="search"><div class="icon">SS</div><h3>Semantic Search</h3><p>키워드가 달라도 의미적으로 관련된 자료를 탐색합니다.</p></article>
+          <article class="card feature-card" data-feature="qa"><div class="icon">QA</div><h3>Grounded QA</h3><p>Evidence Span을 기반으로 답변하고 출처를 연결합니다.</p></article>
         </div>
       </div>
     </section>
@@ -313,71 +335,40 @@
     <section id="prototype" class="reveal">
       <div class="container">
         <div class="section-head">
-          <h2>Current working prototype</h2>
-          <p>현재 로컬 환경에서 실제로 작동하는 화면입니다. 좌우로 넘기거나 이미지를 클릭해 크게 볼 수 있습니다.</p>
+          <h2>Explore the AI Healthcare Intelligence Platform</h2>
+          <p>왼쪽 메뉴를 눌러 실제 구현 화면을 둘러볼 수 있습니다. 화면을 누르면 상세 설명 패널이 열립니다.</p>
         </div>
 
-        <div class="slider-wrap">
-          <div class="slider" id="prototypeSlider">
-            <article class="card slide">
-              <span class="shot-badge">Live Screenshot</span>
-              <button type="button" data-full="assets/dashboard-overview.png">
-                <img src="assets/dashboard-overview.png" alt="Dashboard overview" />
-              </button>
-              <div class="shot-body">
-                <h3>Dashboard Overview</h3>
-                <p>Project overview, knowledge statistics, and development progress in a single workspace.</p>
-              </div>
-            </article>
-
-            <article class="card slide">
-              <span class="shot-badge">Live Screenshot</span>
-              <button type="button" data-full="assets/knowledge-workspace.png">
-                <img src="assets/knowledge-workspace.png" alt="Knowledge workspace" />
-              </button>
-              <div class="shot-body">
-                <h3>Knowledge Workspace</h3>
-                <p>Browse and search structured papers, guidelines, government reports, and internal knowledge.</p>
-              </div>
-            </article>
-
-            <article class="card slide">
-              <span class="shot-badge">Live Screenshot</span>
-              <button type="button" data-full="assets/knowledge-detail.png">
-                <img src="assets/knowledge-detail.png" alt="Knowledge detail" />
-              </button>
-              <div class="shot-body">
-                <h3>Knowledge Detail</h3>
-                <p>Review structured summaries, resources, Learning Notes, AI Reflection, and related evidence.</p>
-              </div>
-            </article>
-
-            <article class="card slide">
-              <span class="shot-badge">Live Screenshot</span>
-              <button type="button" data-full="assets/grounded-qa.png">
-                <img src="assets/grounded-qa.png" alt="Grounded question answering" />
-              </button>
-              <div class="shot-body">
-                <h3>Grounded Question Answering</h3>
-                <p>Evidence-grounded answers with linked source references and reusable research context.</p>
-              </div>
-            </article>
-
-            <article class="card slide">
-              <span class="shot-badge">Live Screenshot</span>
-              <button type="button" data-full="assets/connections.png">
-                <img src="assets/connections.png" alt="Knowledge connections" />
-              </button>
-              <div class="shot-body">
-                <h3>Knowledge Connections</h3>
-                <p>Explain why documents are related and why each relationship matters for research or design.</p>
-              </div>
-            </article>
+        <div class="prototype-shell">
+          <div class="prototype-tabs">
+            <button class="prototype-tab active" data-screen="dashboard">Dashboard</button>
+            <button class="prototype-tab" data-screen="workspace">Knowledge</button>
+            <button class="prototype-tab" data-screen="detail">Detail</button>
+            <button class="prototype-tab" data-screen="qa">Grounded QA</button>
+            <button class="prototype-tab" data-screen="connections">Connections</button>
           </div>
 
-          <div class="slider-controls">
-            <button class="round-btn" id="prevSlide" aria-label="이전 화면">‹</button>
-            <button class="round-btn" id="nextSlide" aria-label="다음 화면">›</button>
+          <div class="card prototype-stage">
+            <div class="prototype-screen active" data-screen-panel="dashboard">
+              <button data-detail="dashboard"><img src="assets/dashboard-overview.png" alt="Dashboard overview"></button>
+              <div class="prototype-copy"><h3>Dashboard Overview</h3><p>Project overview, knowledge statistics, and development progress in a single workspace.</p><div class="prototype-meta"><span class="mini-chip">382 Knowledge Objects</span><span class="mini-chip">Project Status</span><span class="mini-chip">Research Dashboard</span></div><div class="explore-hint">Click the screen for details →</div></div>
+            </div>
+            <div class="prototype-screen" data-screen-panel="workspace">
+              <button data-detail="workspace"><img src="assets/knowledge-workspace.png" alt="Knowledge workspace"></button>
+              <div class="prototype-copy"><h3>Knowledge Workspace</h3><p>Browse and search structured papers, guidelines, government reports, and internal knowledge.</p><div class="prototype-meta"><span class="mini-chip">Search</span><span class="mini-chip">Filters</span><span class="mini-chip">Metadata</span></div><div class="explore-hint">Click the screen for details →</div></div>
+            </div>
+            <div class="prototype-screen" data-screen-panel="detail">
+              <button data-detail="detail"><img src="assets/knowledge-detail.png" alt="Knowledge detail"></button>
+              <div class="prototype-copy"><h3>Knowledge Detail</h3><p>Review structured summaries, resources, Learning Notes, AI Reflection, and related evidence.</p><div class="prototype-meta"><span class="mini-chip">Summary</span><span class="mini-chip">Resources</span><span class="mini-chip">Learning</span></div><div class="explore-hint">Click the screen for details →</div></div>
+            </div>
+            <div class="prototype-screen" data-screen-panel="qa">
+              <button data-detail="qa"><img src="assets/grounded-qa.png" alt="Grounded QA"></button>
+              <div class="prototype-copy"><h3>Grounded Question Answering</h3><p>Evidence-grounded answers with linked source references and reusable research context.</p><div class="prototype-meta"><span class="mini-chip">Retrieval</span><span class="mini-chip">Evidence Span</span><span class="mini-chip">Source Link</span></div><div class="explore-hint">Click the screen for details →</div></div>
+            </div>
+            <div class="prototype-screen" data-screen-panel="connections">
+              <button data-detail="connections"><img src="assets/connections.png" alt="Connections"></button>
+              <div class="prototype-copy"><h3>Knowledge Connections</h3><p>Explain why documents are related and why each relationship matters for research or design.</p><div class="prototype-meta"><span class="mini-chip">Relationships</span><span class="mini-chip">Research Context</span><span class="mini-chip">Design Relevance</span></div><div class="explore-hint">Click the screen for details →</div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -392,7 +383,7 @@
 
         <div class="pipeline">
           <div class="pipeline-row">
-            <div class="pipeline-step"><b>Source Documents</b><small>Papers, Guidelines, Reports</small></div>
+            <div class="pipeline-step pulse-node"><b>Source Documents</b><small>Papers, Guidelines, Reports</small></div>
             <div class="pipeline-step"><b>Knowledge Objects</b><small>Structured metadata and summary</small></div>
             <div class="pipeline-step"><b>Learning Notes</b><small>Reusable study assets</small></div>
             <div class="pipeline-step"><b>AI Reflection</b><small>Gaps, ideas, implications</small></div>
@@ -407,13 +398,9 @@
             <h3>Technology Stack</h3>
             <p>Backend, frontend, retrieval, and testing are integrated into one personal research workflow.</p>
             <div class="stack">
-              <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span>
-              <span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Embeddings</span>
-              <span class="chip">Semantic Retrieval</span><span class="chip">Grounded QA</span>
-              <span class="chip">Evidence Span</span><span class="chip">Pytest</span>
+              <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Embeddings</span><span class="chip">Semantic Retrieval</span><span class="chip">Grounded QA</span><span class="chip">Evidence Span</span><span class="chip">Pytest</span>
             </div>
           </article>
-
           <article class="card">
             <h3>Design Principles</h3>
             <div class="overview-list">
@@ -434,10 +421,9 @@
           <h2>Development path</h2>
           <p>지식 플랫폼에서 임상 AI 워크플로우 지원으로 확장되는 연구 방향입니다.</p>
         </div>
-
         <div class="architecture-grid">
           <article class="card">
-            <h3>Roadmap</h3>
+            <h3>Timeline</h3>
             <div class="timeline">
               <div class="timeline-item"><span class="timeline-dot"></span><b>Knowledge Foundation</b><span>Knowledge Objects, Learning Notes, Connections, Semantic Search</span></div>
               <div class="timeline-item"><span class="timeline-dot"></span><b>Evidence-grounded Intelligence</b><span>Grounded QA, Evidence Deep Links, Study Assist</span></div>
@@ -446,7 +432,6 @@
               <div class="timeline-item"><span class="timeline-dot"></span><b>Workflow Integration Research</b><span>Future agent workflow and hospital integration exploration</span></div>
             </div>
           </article>
-
           <article class="card future">
             <h3>Current / Next</h3>
             <div class="roadmap">
@@ -478,10 +463,7 @@
 
     <section class="reveal">
       <div class="container">
-        <div class="disclaimer">
-          이 프로젝트는 개인 연구 및 프로토타이핑 목적으로 제작되었습니다.
-          의료기기, 진단 시스템, 치료 권고 시스템 또는 직접적인 환자 진료 도구가 아닙니다.
-        </div>
+        <div class="disclaimer">이 프로젝트는 개인 연구 및 프로토타이핑 목적으로 제작되었습니다. 의료기기, 진단 시스템, 치료 권고 시스템 또는 직접적인 환자 진료 도구가 아닙니다.</div>
       </div>
     </section>
   </main>
@@ -493,66 +475,117 @@
     </div>
   </footer>
 
-  <div class="modal" id="imageModal" aria-hidden="true">
+  <div class="modal" id="detailModal" aria-hidden="true">
     <button class="modal-close" type="button" aria-label="닫기">×</button>
-    <img src="" alt="확대된 프로토타입 화면">
+    <div class="modal-card">
+      <img id="modalImage" src="" alt="">
+      <div class="modal-body">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+        <div class="detail-grid">
+          <div class="detail-box"><b>Purpose</b><span id="modalPurpose"></span></div>
+          <div class="detail-box"><b>Implemented</b><span id="modalImplemented"></span></div>
+          <div class="detail-box"><b>Next</b><span id="modalNext"></span></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    const reveals = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
+    const reveals=document.querySelectorAll(".reveal");
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.12});
+    reveals.forEach(el=>observer.observe(el));
+
+    document.querySelectorAll(".counter").forEach(counter=>{
+      const target=Number(counter.dataset.target); let started=false;
+      const co=new IntersectionObserver(entries=>entries.forEach(entry=>{
+        if(!entry.isIntersecting||started)return; started=true;
+        const duration=900,start=performance.now();
+        function tick(now){const p=Math.min((now-start)/duration,1);counter.textContent=Math.floor(target*p);if(p<1)requestAnimationFrame(tick)}
+        requestAnimationFrame(tick);
+      }),{threshold:.6});
+      co.observe(counter);
+    });
+
+    const heroSlides=[...document.querySelectorAll(".hero-slide")]; let heroIndex=0;
+    setInterval(()=>{heroSlides[heroIndex].classList.remove("active");heroIndex=(heroIndex+1)%heroSlides.length;heroSlides[heroIndex].classList.add("active")},3500);
+
+    const screenData={
+      dashboard:{
+        image:"assets/dashboard-overview.png",title:"Dashboard Overview",
+        desc:"The research command center for project status and knowledge assets.",
+        purpose:"프로젝트 현황과 지식 자산 규모를 한 화면에서 확인",
+        implemented:"Knowledge statistics · Project status · Dashboard navigation",
+        next:"More visual analytics and project-level trends"
+      },
+      workspace:{
+        image:"assets/knowledge-workspace.png",title:"Knowledge Workspace",
+        desc:"A searchable workspace for structured healthcare AI knowledge.",
+        purpose:"논문, 가이드라인, 정부자료, 내부 지식을 탐색",
+        implemented:"Search · Filters · Metadata navigation · Knowledge list",
+        next:"Advanced clustering and graph-based discovery"
+      },
+      detail:{
+        image:"assets/knowledge-detail.png",title:"Knowledge Detail",
+        desc:"Structured summaries and reusable learning layers around each source.",
+        purpose:"한 문서의 구조화 지식, 학습, 리소스를 통합 검토",
+        implemented:"Summary · Resources · Learning Notes · AI Reflection",
+        next:"Richer citation-level navigation and cross-document synthesis"
+      },
+      qa:{
+        image:"assets/grounded-qa.png",title:"Grounded Question Answering",
+        desc:"Evidence-grounded answers connected back to supporting sources.",
+        purpose:"저장된 근거를 바탕으로 답변하고 Evidence로 되돌아가기",
+        implemented:"Semantic retrieval · Evidence Span · Source references",
+        next:"Citation-aware multi-document synthesis and quality checks"
+      },
+      connections:{
+        image:"assets/connections.png",title:"Knowledge Connections",
+        desc:"Relationships across papers, guidelines, notes, and design decisions.",
+        purpose:"문서 간 연결 이유와 설계 중요성을 재사용 가능한 지식으로 관리",
+        implemented:"Relationship explanation · Research relevance · Design relevance",
+        next:"Interactive knowledge graph visualization"
+      }
+    };
+
+    document.querySelectorAll(".prototype-tab").forEach(tab=>{
+      tab.addEventListener("click",()=>{
+        document.querySelectorAll(".prototype-tab").forEach(t=>t.classList.remove("active"));
+        document.querySelectorAll(".prototype-screen").forEach(p=>p.classList.remove("active"));
+        tab.classList.add("active");
+        document.querySelector(`[data-screen-panel="${tab.dataset.screen}"]`).classList.add("active");
       });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
-
-    document.querySelectorAll(".counter").forEach(counter => {
-      const target = Number(counter.dataset.target);
-      let started = false;
-      const counterObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting || started) return;
-          started = true;
-          const duration = 900;
-          const start = performance.now();
-          function tick(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            counter.textContent = Math.floor(target * progress);
-            if (progress < 1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-        });
-      }, { threshold: 0.6 });
-      counterObserver.observe(counter);
     });
 
-    const slider = document.getElementById("prototypeSlider");
-    document.getElementById("prevSlide").addEventListener("click", () => {
-      slider.scrollBy({ left: -Math.min(860, window.innerWidth * .82), behavior: "smooth" });
-    });
-    document.getElementById("nextSlide").addEventListener("click", () => {
-      slider.scrollBy({ left: Math.min(860, window.innerWidth * .82), behavior: "smooth" });
-    });
+    const modal=document.getElementById("detailModal");
+    const modalImage=document.getElementById("modalImage");
+    const modalTitle=document.getElementById("modalTitle");
+    const modalDescription=document.getElementById("modalDescription");
+    const modalPurpose=document.getElementById("modalPurpose");
+    const modalImplemented=document.getElementById("modalImplemented");
+    const modalNext=document.getElementById("modalNext");
 
-    const modal = document.getElementById("imageModal");
-    const modalImage = modal.querySelector("img");
-    const closeButton = modal.querySelector(".modal-close");
-    document.querySelectorAll("[data-full]").forEach(button => {
-      button.addEventListener("click", () => {
-        modalImage.src = button.dataset.full;
-        modal.classList.add("open");
-        modal.setAttribute("aria-hidden", "false");
-      });
-    });
-    function closeModal() {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImage.src = "";
+    function openDetail(key){
+      const d=screenData[key];
+      modalImage.src=d.image;modalImage.alt=d.title;
+      modalTitle.textContent=d.title;modalDescription.textContent=d.desc;
+      modalPurpose.textContent=d.purpose;modalImplemented.textContent=d.implemented;modalNext.textContent=d.next;
+      modal.classList.add("open");modal.setAttribute("aria-hidden","false");
     }
-    closeButton.addEventListener("click", closeModal);
-    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+    function closeModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true")}
+
+    document.querySelectorAll("[data-detail]").forEach(btn=>btn.addEventListener("click",()=>openDetail(btn.dataset.detail)));
+    document.querySelector(".modal-close").addEventListener("click",closeModal);
+    modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+
+    const featureMap={
+      knowledge:"detail", learning:"detail", reflection:"detail",
+      connections:"connections", search:"workspace", qa:"qa"
+    };
+    document.querySelectorAll("[data-feature]").forEach(card=>{
+      card.addEventListener("click",()=>openDetail(featureMap[card.dataset.feature]));
+    });
   </script>
 </body>
 </html>
